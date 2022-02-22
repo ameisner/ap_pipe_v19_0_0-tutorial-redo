@@ -3,6 +3,7 @@ eups list lsst_distrib
 # start fresh
 chmod -R ug+w DATA flats_biases ; rm -rf DATA flats_biases
 
+# create Butler repo
 mkdir DATA
 mkdir DATA/CALIB
 
