@@ -1,0 +1,14 @@
+!RepositoryCfg_v1
+_mapper: &id001 !!python/name:lsst.obs.decam.DecamMapper ''
+_mapperArgs: {}
+_parents:
+- !RepositoryCfg_v1
+  _mapper: *id001
+  _mapperArgs: {}
+  _parents: []
+  _policy: null
+  _root: /data0/ameisner/ap_pipe_v19_0_0-tutorial-redo/DATA
+  dirty: true
+_policy: null
+_root: null
+dirty: true
