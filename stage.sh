@@ -24,10 +24,6 @@ rsync -arv $DATA/ap_verify_hits2015/preloaded/DECam/calib/*/cpFlat/g/*/cpFlat*.f
 ingestCalibs.py DATA --calib DATA/CALIB flats_biases/*.fits --validity 999 --mode=link
 
 # go with a 2015 version of defects
-#ingestDefects.py DATA $DATA/ap_verify_hits2015/preloaded/DECam/calib/curated/20150105T011500Z/defects --calib=DATA/CALIB
-#ingestDefects.py DATA $OBS_DECAM_DIR/decam/CALIB/defects --calib DATA/CALIB
-#ingestDefects.py DATA $DATA/ap_verify_hits2015/preloaded/DECam/calib/curated --calib DATA/CALIB
-#ingestDefects.py DATA $OBS_DECAM_DIR/decam/CALIB/defects/2015-01-05T01:15:00 --calib DATA/CALIB
 ingestDefects.py DATA /data0/ameisner/lsst_stack_v19_0_0/stack/miniconda3-4.7.10-4d7b902/Linux64/obs_decam_data/19.0.0/decam/defects --calib DATA/CALIB
 
 mkdir DATA/ref_cats
