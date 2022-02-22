@@ -1,3 +1,5 @@
+eups list lsst_distrib
+
 mkdir DATA
 mkdir DATA/CALIB
 
@@ -23,13 +25,13 @@ rsync -arv ../ap_verify_hits2015/preloaded/refcats/gen2/* DATA/ref_cats
 
 chmod -R ug+w DATA/ref_cats
 
-# not really sure why this is necessary but it seems to be needed based on trial and error
+# seems to be needed based on trial and error
 mv DATA/ref_cats/panstarrs DATA/ref_cats/ps1_pv3_3pi_20170110
 
 # based on https://community.lsst.org/t/reducing-suprime-cam-data/2762/14
-cp /data0/ameisner/v19_0_0-tutorial/redo/DATA/ref_cats/ps1_pv3_3pi_20170110/master_schema.fits DATA/ref_cats/ps1_pv3_3pi_20170110/master_schema.fits
+cp /data0/ameisner/v19_0_0-tutorial/DATA/ref_cats/ps1_pv3_3pi_20170110/master_schema.fits DATA/ref_cats/ps1_pv3_3pi_20170110/master_schema.fits
 
-cp -p /data0/ameisner/v19_0_0-tutorial/redo/DATA/ref_cats/ps1_pv3_3pi_20170110/config.py DATA/ref_cats/ps1_pv3_3pi_20170110/
+cp -p /data0/ameisner/v19_0_0-tutorial/DATA/ref_cats/ps1_pv3_3pi_20170110/config.py DATA/ref_cats/ps1_pv3_3pi_20170110/
 
 # master_schema.fits and config.py for Gaia reference catalogs
 cp -p /data0/ameisner/testdata_decam/ingested/ref_cats/gaia/master_schema.fits DATA/ref_cats/gaia
@@ -42,5 +44,5 @@ rsync -arv /data0/ameisner/ap_verify_hits2015/preloaded/templates/deep/deepCoadd
 chmod -R ug+w DATA
 
 # can't seem to find much/any documentation on repositoryCfg.yaml
-# this version based on : /data0/ameisner/v19_0_0-tutorial/redo/DATA/rerun/processCcdOutputs/repositoryCfg.yaml
+# this version based on : /data0/ameisner/v19_0_0-tutorial/DATA/rerun/processCcdOutputs/repositoryCfg.yaml
 cp -p repositoryCfg.yaml DATA/templates

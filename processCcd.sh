@@ -1,1 +1,4 @@
-processCcd.py DATA --rerun processCcdOutputs --id visit=412321 ccdnum=42 filter=g --configfile ${OBS_DECAM_DIR}/config/processCcdCpIsr.py
+eups list lsst_distrib
+
+rm -rf DATA/rerun/processCcdOutputs
+processCcd.py DATA --calib DATA/CALIB --rerun processCcdOutputs --id visit=412321 ccdnum=42 filter=g --longlog &> processCcd.log &
