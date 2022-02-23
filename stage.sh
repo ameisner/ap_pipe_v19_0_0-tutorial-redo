@@ -46,10 +46,9 @@ cp -p $DATA/v19_0_0-tutorial/DATA/ref_cats/ps1_pv3_3pi_20170110/config.py DATA/r
 cp -p $DATA/testdata_decam/ingested/ref_cats/gaia/master_schema.fits DATA/ref_cats/gaia
 cp -p $DATA/testdata_decam/ingested/ref_cats/gaia/config.py DATA/ref_cats/gaia
 
-mkdir DATA/templates
-mkdir DATA/templates/g
+mkdir -p DATA/templates/deepCoadd/g/0
 
-rsync -arv $DATA/ap_verify_hits2015/preloaded/templates/deep/deepCoadd DATA/templates/g
+rsync -arv $DATA/ap_verify_hits2015/preloaded/templates/deep/deepCoadd/0/*/g/*.fits DATA/templates/deepCoadd/g/0
 
 # can't seem to find much/any documentation on repositoryCfg.yaml
 # this version based on : $DATA/v19_0_0-tutorial/DATA/rerun/processCcdOutputs/repositoryCfg.yaml
@@ -58,3 +57,5 @@ cp -p repositoryCfg.yaml DATA/templates
 chmod -R ug+w DATA
 
 python rename_ps_refcats.py
+
+chmod -R a+rX DATA
