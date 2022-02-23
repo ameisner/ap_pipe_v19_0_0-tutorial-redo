@@ -23,16 +23,18 @@ rsync -arv $DATA/ap_verify_hits2015/preloaded/DECam/calib/*/cpFlat/g/*/cpFlat*.f
 # mode=link suggestion comes from https://github.com/lsst/obs_decam/blob/c61c294ec8411b21af064a367e2ecf46119e0989/README.md
 ingestCalibs.py DATA --calib DATA/CALIB flats_biases/*.fits --validity 999 --mode=link
 
-# go with a 2015 version of defects
+# for ingestDefects.py to work, need to use defects that are organized into per-CCD directories and in .ecsv format
+# per RFC-595 community forum post https://community.lsst.org/t/changes-to-how-defects-are-handled-implementation-of-rfc-595/3732 (thanks Shenming!)
 ingestDefects.py DATA /data0/ameisner/lsst_stack_v19_0_0/stack/miniconda3-4.7.10-4d7b902/Linux64/obs_decam_data/19.0.0/decam/defects --calib DATA/CALIB
 
 mkdir DATA/ref_cats
 
-rsync -arv ../ap_verify_hits2015/preloaded/refcats/gen2/* DATA/ref_cats
+rsync -arv $DATA/ap_verify_hits2015/preloaded/refcats/gen2/* DATA/ref_cats
 
 chmod -R ug+w DATA/ref_cats
 
-# seems to be needed based on trial and error
+# seems to be needed based on trial and error, may be related to:
+# obs_decam/19.0.0+2/config/processCcd.py, particularly the config.calibrate.connections.astromRefCat and config.calibrate.connections.photoRefCat
 mv DATA/ref_cats/panstarrs DATA/ref_cats/ps1_pv3_3pi_20170110
 
 # based on https://community.lsst.org/t/reducing-suprime-cam-data/2762/14
