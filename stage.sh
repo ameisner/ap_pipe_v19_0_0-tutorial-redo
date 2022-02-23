@@ -47,11 +47,14 @@ cp -p $DATA/testdata_decam/ingested/ref_cats/gaia/master_schema.fits DATA/ref_ca
 cp -p $DATA/testdata_decam/ingested/ref_cats/gaia/config.py DATA/ref_cats/gaia
 
 mkdir DATA/templates
+mkdir DATA/templates/g
 
-rsync -arv $DATA/ap_verify_hits2015/preloaded/templates/deep/deepCoadd DATA/templates
+rsync -arv $DATA/ap_verify_hits2015/preloaded/templates/deep/deepCoadd DATA/templates/g
 
 # can't seem to find much/any documentation on repositoryCfg.yaml
 # this version based on : $DATA/v19_0_0-tutorial/DATA/rerun/processCcdOutputs/repositoryCfg.yaml
 cp -p repositoryCfg.yaml DATA/templates
 
 chmod -R ug+w DATA
+
+python rename_ps_refcats.py
